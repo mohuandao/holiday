@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.holiday.mapper.SysUserMapper">
+  <resultMap id="BaseResultMap" type="com.example.holiday.model.SysUser">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="hobby" jdbcType="VARCHAR" property="hobby" />
+  </resultMap>
+
+
+
+  <insert id="add">
+    insert into sys_user (name,sex,age,hobby) values (#{name},#{sex},#{age},#{hobby})
+  </insert>
+
+  <select id="list_link" resultType="java.util.LinkedHashMap">
+    select * from sys_user
+  </select>
+</mapper>
