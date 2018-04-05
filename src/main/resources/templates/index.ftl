@@ -56,6 +56,13 @@
     <input id="submit" type="submit" value="提交">
 </form>
 
+<form id="excel_one" action="/export_1"></form>
+<button id="excel_one_button">导出单sheet</button>
+<script>
+    $("#excel_one_button").click(function () {
+        $("#excel_one").submit();
+    });
 
+</script>
 </body>
 </html>
