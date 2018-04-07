@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.holiday.mapper.HUserMapper">
+  <resultMap id="BaseResultMap" type="com.example.holiday.model.HUser">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="u_id" jdbcType="INTEGER" property="uId" />
+    <result column="u_name" jdbcType="VARCHAR" property="uName" />
+    <result column="u_password" jdbcType="VARCHAR" property="uPassword" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="is_valid" jdbcType="INTEGER" property="isValid" />
+    <result column="is_active" jdbcType="INTEGER" property="isActive" />
+  </resultMap>
+
+
+<select id="selectByName" resultMap="BaseResultMap">
+  SELECT u_name,u_password,email,is_valid,is_active FROM h_user WHERE u_name = #{name}
+</select>
+</mapper>
