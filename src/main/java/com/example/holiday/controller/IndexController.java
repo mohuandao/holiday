@@ -22,8 +22,8 @@ public class IndexController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private ExcelUtils excelUtils;
+    /*@Autowired
+    private ExcelUtils excelUtils;*/
     @RequestMapping(value = {"/"})
     @ResponseBody
     public String hello(){
@@ -70,7 +70,7 @@ public class IndexController {
             headers.add(key);
         }
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        ByteArrayInputStream in = excelUtils.export(list_link, title, headers, out);
+        ByteArrayInputStream in = ExcelUtils.export(list_link, title, headers, out);
 
         response.reset();
         response.setContentType("application/msexcel;charset=utf-8");
