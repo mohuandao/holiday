@@ -15,13 +15,13 @@
                 rules:{
                     name:"required",
                     sex:{required:true},
-                    age:{required:true,minlength:5},
+                    age:{required:true},
                     hobby:{required:true,minlength:5}
                 },
                 messages:{
                     name:"请输入姓名",
                     sex:{required:"不能为空"},
-                    age:{required:"请输入密码",minlength:"不能小于5个字符"},
+                    age:{required:"请输入密码"},
                     hobby:{required:"请输入确认密码",minlength:"不能小于5个字符"}
                 }
             });
