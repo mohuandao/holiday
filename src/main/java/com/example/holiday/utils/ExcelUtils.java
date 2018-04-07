@@ -1,7 +1,6 @@
 package com.example.holiday.utils;
 
 import org.apache.poi.hssf.usermodel.*;
-import org.springframework.stereotype.Component;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -13,10 +12,10 @@ import java.util.Map;
 /**
  * excel导出的工具类
  */
-@Component
+
 public class ExcelUtils {
     //单sheet页
-    public ByteArrayInputStream export(List<LinkedHashMap<String,Object>> list,String title,
+    public static ByteArrayInputStream export(List<LinkedHashMap<String,Object>> list,String title,
                           List<String> headers,ByteArrayOutputStream out) throws IOException {
         //声明一个工作簿
         HSSFWorkbook book = new HSSFWorkbook();
@@ -42,7 +41,7 @@ public class ExcelUtils {
     }
 
     //多sheet页导出
-    public Boolean export_m(List<LinkedHashMap<String,Object>> list,
+    public static Boolean export_m(List<LinkedHashMap<String,Object>> list,
                             String title,List<String> headers,HSSFWorkbook workbook){
         HSSFSheet createSheet = workbook.createSheet(title);
         // 设置表格默认列宽度为15个字节
@@ -62,7 +61,7 @@ public class ExcelUtils {
         return true;
     }
 
-    private void createList(List<LinkedHashMap<String, Object>> list, HSSFSheet createSheet) {
+    private static void createList(List<LinkedHashMap<String, Object>> list, HSSFSheet createSheet) {
         HSSFRow row;
         for(int i = 1; i<list.size()+1; i++) {
             row = createSheet.createRow(i);
