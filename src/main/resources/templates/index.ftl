@@ -4,11 +4,12 @@
     <title>测试用</title>
 
 
-    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
+    <#--<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>-->
+    <script src="/js/jquery-3.3.1.js"></script>
     <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
     <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
     <script >
-        debugger;
+        //debugger;
         $().ready(function(){
             $("#wdtet").validate({
                 rules:{
