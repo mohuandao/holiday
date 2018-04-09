@@ -29,8 +29,8 @@ public class LoginController {
             cookie.setPath("/");
             if (rememberme){
                 cookie.setMaxAge(3600*24*5);//5天
-
             }
+            response.addCookie(cookie);
         }
         return "";
     }
