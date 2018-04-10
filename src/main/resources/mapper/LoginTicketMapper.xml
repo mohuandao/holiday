@@ -11,4 +11,8 @@
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="ticket" property="ticket" jdbcType="VARCHAR" />
   </resultMap>
+
+  <insert id="addTicket">
+    insert into login_ticket (u_id,expired,status,ticket)values (#{uId},#{expired},#{status},#{ticket})
+  </insert>
 </mapper>
