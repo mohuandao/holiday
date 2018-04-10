@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface HUserMapper extends MyMapper<HUser> {
     HUser selectByName(String name);
+
+    void addUser(HUser user);
 }
