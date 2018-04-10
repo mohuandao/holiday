@@ -2,9 +2,15 @@
 <head>
     <meta charset="utf-8">
     <title>测试用</title>
-
+    <#if user?exists>
+        <p>你好,${user.uName}</p>
+    <#else>
+        <a href="/reglogin">登陆/注册</a>
+    </#if>
 
     <#--<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>-->
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <script src="/layui/layui.js"></script>
     <script src="/js/jquery-3.3.1.js"></script>
     <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
     <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
@@ -58,6 +64,8 @@
 </form>
 
 <form id="excel_one" action="/export_1"></form>
+
+
 <button id="excel_one_button">导出单sheet</button>
 <script>
     $("#excel_one_button").click(function () {
