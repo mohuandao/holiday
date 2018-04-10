@@ -15,6 +15,10 @@
 
 
 <select id="selectByName" resultMap="BaseResultMap">
-  SELECT u_name,u_password,email,is_valid,is_active FROM h_user WHERE u_name = #{name}
+  SELECT u_id,u_name,u_password,email,is_valid,is_active FROM h_user WHERE u_name = #{name}
 </select>
+
+ <insert id="addUser">
+   insert into h_user (u_name,u_password)values (#{uName},#{uPassword})
+ </insert>
 </mapper>
