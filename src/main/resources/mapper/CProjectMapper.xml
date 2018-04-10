@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.holiday.mapper.CProjectMapper" >
+  <resultMap id="BaseResultMap" type="com.example.holiday.model.CProject" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="RESOURCE_ID" property="resourceId" jdbcType="VARCHAR" />
+    <result column="XMMC" property="xmmc" jdbcType="VARCHAR" />
+    <result column="JZGBH" property="jzgbh" jdbcType="VARCHAR" />
+    <result column="XYBH" property="xybh" jdbcType="VARCHAR" />
+    <result column="NF" property="nf" jdbcType="VARCHAR" />
+    <result column="RKFS" property="rkfs" jdbcType="VARCHAR" />
+    <result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFY_USER" property="modifyUser" jdbcType="VARCHAR" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="SPJG" property="spjg" jdbcType="VARCHAR" />
+    <result column="LCZT" property="lczt" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>
