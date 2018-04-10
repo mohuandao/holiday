@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LoginTicketMapper extends MyMapper<LoginTicket> {
+    void addTicket(LoginTicket ticket);
 }
