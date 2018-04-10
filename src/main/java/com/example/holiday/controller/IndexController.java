@@ -25,15 +25,16 @@ public class IndexController {
     /*@Autowired
     private ExcelUtils excelUtils;*/
     @RequestMapping(value = {"/"})
-    @ResponseBody
+
     public String hello(){
-        return "hello";
+        return "login";
     }
 
-    @RequestMapping("/index")
+    //关闭首页路口,创建sys_user本是一个测试表,现在重新创建一个测试表
+    /*@RequestMapping("/index")
     public String index(){
         return "index";
-    }
+    }*/
 
     @RequestMapping("adduser")
     public void addUser(@RequestParam String name,@RequestParam String sex,
