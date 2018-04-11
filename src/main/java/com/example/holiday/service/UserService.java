@@ -12,4 +12,6 @@ public interface UserService {
     List<LinkedHashMap<String,Object>> select_me();
 
     Map<String,Object> login(String name,String password);
+
+    Map<String,Object> reg(String name,String password);
 }
