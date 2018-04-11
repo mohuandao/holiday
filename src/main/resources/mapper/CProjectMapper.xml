@@ -18,4 +18,8 @@
     <result column="SPJG" property="spjg" jdbcType="VARCHAR" />
     <result column="LCZT" property="lczt" jdbcType="VARCHAR" />
   </resultMap>
+
+  <select id="list" resultType="java.util.LinkedHashMap">
+    select XMMC,JZGBH,XYBH,NF,RKFS,SPJG,LCZT from c_project
+  </select>
 </mapper>
