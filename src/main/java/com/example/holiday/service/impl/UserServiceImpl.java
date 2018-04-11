@@ -1,6 +1,7 @@
 package com.example.holiday.service.impl;
 
 import com.example.holiday.mapper.HUserMapper;
+import com.example.holiday.mapper.LoginTicketMapper;
 import com.example.holiday.mapper.SysUserMapper;
 import com.example.holiday.model.HUser;
 import com.example.holiday.model.LoginTicket;
@@ -18,7 +19,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private SysUserMapper userMapper;
     @Autowired
-    HUserMapper hUserMapper;
+    private LoginTicketMapper loginTicketMapper;
+    @Autowired
+   private HUserMapper hUserMapper;
    /* @Autowired
     HolidayUtils holidayUtils;*/
 
@@ -62,8 +65,37 @@ public class UserServiceImpl implements UserService {
         //登录
         String ticket = addTicket(user.getuId());
         map.put("ticket",ticket);
-        map.put("userId",user.getuId());
+        map.put("user",user);
         return map;
+    }
+
+    @Override
+    public Map<String, Object> reg(String name, String password) {
+        Map<String, Object> map = new HashMap<>();
+        if (StringUtils.isEmpty(name)) {
+            map.put("msg","用户名不能为空");
+            return map;
+        }
+        if (StringUtils.isEmpty(password)) {
+            map.put("msg","密码不能为空");
+            return map;
+        }
+        HUser user = hUserMapper.selectByName(name);
+        if (user!=null) {
+            map.put("msg","用户名已存在");
+            return map;
+        }
+        //密码强度
+        user = new HUser();
+        user.setuName(name);
+        user.setuPassword(HolidayUtils.MD5(password));
+        hUserMapper.addUser(user);
+        //登陆(注册后自动登陆)再次查询
+        user = hUserMapper.selectByName(name);
+        String ticket = addTicket(user.getuId());
+        map.put("ticket",ticket);
+
+            return map;
     }
 
     //产生ticket
@@ -75,6 +107,7 @@ public class UserServiceImpl implements UserService {
         ticket.setExpired(date);
         ticket.setStatus(0);
         ticket.setTicket(UUID.randomUUID().toString().replace("-",""));
+        loginTicketMapper.addTicket(ticket);
         return ticket.getTicket();
     }
 
