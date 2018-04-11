@@ -1,26 +1,29 @@
 package com.example.holiday.controller;
 
+import com.alibaba.druid.support.json.JSONUtils;
+import com.example.holiday.model.CProject;
 import com.example.holiday.model.SysUser;
+import com.example.holiday.service.DemoService;
 import com.example.holiday.service.UserService;
 import com.example.holiday.utils.ExcelUtils;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class IndexController {
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private DemoService demoService;
 
     /*@Autowired
     private ExcelUtils excelUtils;*/
@@ -35,7 +38,30 @@ public class IndexController {
     public String index(){
         return "index";
     }*/
+    @RequestMapping("demo")
+    public String demo() {
+        return "demo";
+    }
+    @RequestMapping(value = "/query/cproject",method =RequestMethod.GET)
+    @ResponseBody
+    public String select_all() throws JsonProcessingException {
+       /* List<Map<String,Object>> list = demoService.select_all1();
+        Map<String,Object> map = new LinkedHashMap<>();
+       map.put("code","0");
+        map.put("msg","");
+        map.put("count",1000);
+        map.put("data",list);*/
+        List<CProject> cProjects = demoService.select_all();
+        Map<String,Object> map = new LinkedHashMap<>();
+        map.put("code","0");
+        map.put("msg","");
+        map.put("count",1000);
+        map.put("data",cProjects);
 
+        ObjectMapper mapper = new ObjectMapper();
+        String s = mapper.writeValueAsString(map);
+        return s;
+    }
     @RequestMapping("adduser")
     public void addUser(@RequestParam String name,@RequestParam String sex,
                         @RequestParam int age ,@RequestParam String hobby) {
